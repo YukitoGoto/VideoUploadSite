@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <!-- BootstrapのCSS読み込み -->
+        <link href = "css/bootstrap.min.css" rel = "stylesheet">
+        <!-- jQuery読み込み -->
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- BootstrapのJS読み込み -->
+        <script src = "js/bootstrap.min.js"></script>
+
+        <title>動画投稿サイト</title>
+    </head>
+    <body>
+        <p>投稿する動画を選択してください。Uploadボタンを押すと投稿されます。</p>
+        <form action = "" method = "post" class = "form-horizontal" enctype = "multipart/form-data">
+            <div class = "form-group">
+                <label for = "movie">動画</label>
+                <input type = "file" id = "movie" name = "movie" accept = "video/*" class = "form-control">
+            </div>
+            <div class = "form-group">
+                <label for = "thumbnail">サムネイル</label>
+                <input type = "file" id = "thumbnail" name = "thumbnail" accept = "image/*" class = "form-control">
+            </div>
+            <div class = "form-group">
+                <label for = "title">タイトル</label>
+                <input type = "text" id = "title" name = "title" class = "form-control" placeholder = "動画のタイトルを入力">
+            </div>
+            <div class = "form-group">
+                <button type = "submit" class = "btn btn-warning">Upload</button>
+            </div>
+        </form>
+    </body>
+</html>
