@@ -57,7 +57,7 @@ def save_uploaded_file(attributeName):
   print(fileName + ' has just been uploaded.<br>')
 
 print_header()
-save_uploaded_file('movie')
+#save_uploaded_file('movie')
 save_uploaded_file('thumbnail')
-save_uploaded_file('title')
+#save_uploaded_file('title')
 print_footer()
