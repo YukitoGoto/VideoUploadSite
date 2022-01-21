@@ -1,5 +1,6 @@
 # VideoUploadSite
 ## LoacalWebserver
+- [http://localhost:8080/](http://localhost:8080/)
 - [PythonによるCGIが動くHTTPサーバーを簡単に用意する](https://kurima.hatenablog.com/entry/2016/08/24/005716)
 ## Bootstrap
 - [Webデザインの知識がなくてもOK！Bootstrapの使い方【入門者向け】](https://techacademy.jp/magazine/6270#ta-toc-1)
