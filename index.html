@@ -1,34 +1,25 @@
 <!DOCTYPE html>
-<html lang = "ja">
-    <head>
-        <!-- BootstrapのCSS読み込み -->
-        <link href = "css/bootstrap.min.css" rel = "stylesheet">
-        <!-- jQuery読み込み -->
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- BootstrapのJS読み込み -->
-        <script src = "js/bootstrap.min.js"></script>
-        
-        <meta charset = "utf-8">
-        <title>動画投稿サイト</title>
-    </head>
-    <body>
-        <p>投稿する動画を選択してください。Uploadボタンを押すと投稿されます。</p>
-        <form action = "cgi/savefile.py" method = "post" class = "form-horizontal" enctype = "multipart/form-data">
-            <div class = "form-group">
-                <label for = "title">タイトル</label>
-                <input type = "text" id = "title" name = "title" class = "form-control" placeholder = "動画のタイトルを入力">
-            </div>
-            <div class = "form-group">
-                <label for = "thumbnail">サムネイル</label>
-                <input type = "file" id = "thumbnail" name = "thumbnail" accept = "image/*" class = "form-control">
-            </div>
-            <div class = "form-group">
-                <label for = "movie">動画</label>
-                <input type = "file" id = "movie" name = "movie" accept = "video/*" class = "form-control">
-            </div>
-            <div class = "form-group">
-                <button type = "submit" class = "btn btn-warning">Upload</button>
-            </div>
-        </form>
-    </body>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>動画投稿サイト</title>
+    
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<a href="http://172.16.41.1/~m17252/VideoUploadSite/upload.html">投稿ページ</a>
+	<form class="form-inline">
+		<div class="w-25">
+			<div class="card" onclick="location.href='playsites/video1.html'">
+				<img class="card-img-top" src="thumbnail/2022_1_21_14_0_0_splatoon2_sample.jpg" alt="960x540" style="width:auto">
+				<div class="card-body"> Some more card content </div>
+			</div>
+		</div>
+	</form>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
 </html>

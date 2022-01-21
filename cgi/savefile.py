@@ -1,4 +1,4 @@
-#!/opt/anaconda3/bin/python
+#!/usr/bin/python3
 
 import os
 import sys
@@ -7,13 +7,16 @@ import csv
 import cgi
 import cgitb; cgitb.enable()
 
-CURRENT_PATH = str(os.getcwd())
-#MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + '/movie'
-MOVIE_PATH = '.\\movie\\' if os.name == 'nt' else './title'
-#THUMBNAIL_PATH = CURRENT_PATH + '\\thumbnail\\' if os.name == 'nt' else CURRENT_PATH + '/thumbnail'
-THUMBNAIL_PATH = '.\\thumbnail\\' if os.name == 'nt' else './thumbnail'
-#TITLE_PATH = CURRENT_PATH + '\\title\\' if os.name == 'nt' else CURRENT_PATH + '/title'
-TITLE_PATH = '.\\title\\' if os.name == 'nt' else './title'
+print("Content-Type: text/html;charset=UTF-8")
+print()
+
+CURRENT_PATH = str(os.getcwd().replace('/cgi', ''))
+MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + '/movie/'
+#MOVIE_PATH = '.\\movie\\' if os.name == 'nt' else './title'
+THUMBNAIL_PATH = CURRENT_PATH + '\\thumbnail\\' if os.name == 'nt' else CURRENT_PATH + '/thumbnail/'
+#THUMBNAIL_PATH = '.\\thumbnail\\' if os.name == 'nt' else './thumbnail'
+TITLE_PATH = CURRENT_PATH + '\\title\\' if os.name == 'nt' else CURRENT_PATH + '/title/'
+#TITLE_PATH = '.\\title\\' if os.name == 'nt' else './title'
 
 ATTRIBUTE_NAME_MOVIE = 'movie'
 ATTRIBUTE_NAME_THUMBNAIL = 'thumbnail'
