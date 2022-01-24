@@ -87,7 +87,6 @@ def get_match_file_by_date(fileList, uploadedDate):
 def main():
 	print_header()
 	print_upload_page()
-	print('<a href = "upload.html">投稿ページ</a>')
 	uploadedList = get_uploaded_date_title_list()
 	thumbnailList = get_file_name_list(THUMBNAIL_PATH)
 	movieList = get_file_name_list(MOVIE_PATH)

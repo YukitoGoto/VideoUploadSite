@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+#print("Content-Type: text/html;charset = utf-8")
+#print()
+
 import os
 import sys
 import datetime
@@ -61,41 +64,43 @@ def get_now_time_as_str():
 
 # 動画と画像を保存する
 def save_movie_or_thumbnail(uploadDate, formData, attributeName):
-  	fileName = uploadDate + formData[attributeName].filename
-  	filePath = MOVIE_PATH + fileName if attributeName == ATTRIBUTE_NAME_MOVIE else THUMBNAIL_PATH + fileName if attributeName == ATTRIBUTE_NAME_THUMBNAIL else None
-  	if filePath == None:
+	fileName = uploadDate + formData[attributeName].filename
+	filePath = MOVIE_PATH + fileName if attributeName == ATTRIBUTE_NAME_MOVIE else THUMBNAIL_PATH + fileName if attributeName == ATTRIBUTE_NAME_THUMBNAIL else None
+	if filePath == None:
 		print('<p>unexpected attributeName specified.</p>')
 		print_footer()
-  	item = formData[attributeName]
-  	try:
+	item = formData[attributeName]
+	try:
 		uploadedFile = open(filePath, 'wb')
-  	except:
+	except:
 		print('<p> Failed open file. Check filePath.</p>')
 		print('<p>' + filePath + ' is filePath.</p>')
 		print_footer()
-  	while True:
+	while True:
 		chunk = item.file.read(512)
 		byteValue = uploadedFile.write(chunk)
 		#print('<p>' + str(chunk) + ' = chunk.</p>')
 		#print('<p>' + str(byteValue) + ' = byteValue.</p>')
 		if len(str(chunk)) < 512:
-	  	break
-  	uploadedFile.close()
-  	print('<p>' + fileName + ' has just been uploaded.</p>')
+			break
+	uploadedFile.close()
+	print('<p>' + fileName + ' has just been uploaded.</p>')
 
 # タイトルをcvsファイルに保存する
 def save_title_as_csv(uploadDate, formData, attributeName):
-  	filePath = TITLE_PATH + 'title.csv' if attributeName == ATTRIBUTE_NAME_TITLE else None
-  	if filePath == None:
+	filePath = TITLE_PATH + 'title.csv' if attributeName == ATTRIBUTE_NAME_TITLE else None
+	if filePath == None:
 		print('<p>unexpected attributeName specified.</p>')
 		print_footer()
-  	title = formData[attributeName].value
-  	try:
-		csvFile = open(filePath, 'a', encoding = 'utf-8')
-  	except:
+	title = formData[attributeName].value
+	#try:
+	csvFile = open(filePath, 'a', encoding = 'utf-8')
+	"""
+	except:
 		print('<p> Failed open file. Check filePath.</p>')
 		print('<p>' + filePath + ' is filePath.</p>')
 		print_footer()
+	"""
 	csv.writer(csvFile).writerow([uploadDate, title])
 	csvFile.close()
 	print('<p>' + title + ' has just been written to csv.</p>')
