@@ -7,9 +7,6 @@ import csv
 import cgi
 import cgitb; cgitb.enable()
 
-print("Content-Type: text/html;charset=UTF-8")
-print()
-
 CURRENT_PATH = str(os.getcwd().replace('/cgi', ''))
 MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + '/movie/'
 #MOVIE_PATH = '.\\movie\\' if os.name == 'nt' else './title'
@@ -24,6 +21,10 @@ ATTRIBUTE_NAME_TITLE = 'title'
 
 # HTMLヘッダを出力
 def print_header():
+	# need for cgi
+	print("Content-Type: text/html;charset = utf-8")
+	print()
+	# head
 	print('<!DOCTYPE html>')
 	print('')
 	print('<html lang = "ja">')
@@ -31,8 +32,6 @@ def print_header():
 	print('<head>')
 	print('<!-- BootstrapのCSS読み込み -->')
 	print('<link href = "css/bootstrap.min.css" rel = "stylesheet">')
-	print('<!-- jQuery読み込み -->')
-	print('<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>')
 	print('<!-- BootstrapのJS読み込み -->')
 	print('<script src = "js/bootstrap.min.js"></script>')
 	print('<meta charset = "utf-8">')
@@ -46,7 +45,6 @@ def print_footer():
 	print('</body>')
 	print('')
 	print('</html>')
-	sys.exit(0)
 
 # name属性ごとにファイルを保存
 def save_uploaded_file():
