@@ -3,7 +3,7 @@
 - [http://localhost:8080/](http://localhost:8080/)
 - [PythonによるCGIが動くHTTPサーバーを簡単に用意する](https://kurima.hatenablog.com/entry/2016/08/24/005716)
 ## SchoolWebServer
-- [動画投稿サイト](http://172.16.41.1/~m17252/VideoUploadSite/index.html)
+- [動画投稿サイト](http://172.16.41.1/~m17252/VideoUploadSite/index.py)
 ## Bootstrap
 - [Webデザインの知識がなくてもOK！Bootstrapの使い方【入門者向け】](https://techacademy.jp/magazine/6270#ta-toc-1)
 - [【Bootstrap超入門】フォームの種類・使い方について徹底解説！](https://www.sejuku.net/blog/75886)
