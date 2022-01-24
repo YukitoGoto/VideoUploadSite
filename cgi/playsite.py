@@ -1,15 +1,7 @@
 #!/usr/bin/python3
 
-import os
-import sys
-import datetime
-import csv
 import cgi
 import cgitb; cgitb.enable()
-
-CURRENT_PATH = str(os.getcwd().replace('/cgi', ''))
-MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + '/movie/'
-THUMBNAIL_PATH = CURRENT_PATH + '\\thumbnail\\' if os.name == 'nt' else CURRENT_PATH + '/thumbnail/'
 
 # HTMLヘッダを出力
 def print_header():
@@ -50,9 +42,7 @@ def print_title(thumbnailFileName):
 def main():
 	print_header()
 	formData = cgi.FieldStorage()
-	#print_movie('2022_1_21_13_41_24_example.mp4')
 	print_movie(formData["value2"].value)
-	#print_movie()
 	print_footer()
 
 if __name__ == '__main__':
