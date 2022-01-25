@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-#print("Content-Type: text/html;charset = utf-8")
-#print()
-
 import os
 import sys
 import datetime
@@ -12,11 +9,8 @@ import cgitb; cgitb.enable()
 
 CURRENT_PATH = str(os.getcwd().replace('/cgi', ''))
 MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + '/movie/'
-#MOVIE_PATH = '.\\movie\\' if os.name == 'nt' else './title'
 THUMBNAIL_PATH = CURRENT_PATH + '\\thumbnail\\' if os.name == 'nt' else CURRENT_PATH + '/thumbnail/'
-#THUMBNAIL_PATH = '.\\thumbnail\\' if os.name == 'nt' else './thumbnail'
 TITLE_PATH = CURRENT_PATH + '\\title\\' if os.name == 'nt' else CURRENT_PATH + '/title/'
-#TITLE_PATH = '.\\title\\' if os.name == 'nt' else './title'
 
 ATTRIBUTE_NAME_MOVIE = 'movie'
 ATTRIBUTE_NAME_THUMBNAIL = 'thumbnail'
@@ -48,6 +42,7 @@ def print_footer():
 	print('</body>')
 	print('')
 	print('</html>')
+	sys.exit(0)
 
 # name属性ごとにファイルを保存
 def save_uploaded_file():
@@ -57,10 +52,10 @@ def save_uploaded_file():
 	save_movie_or_thumbnail(nowTime, formData, ATTRIBUTE_NAME_THUMBNAIL)
 	save_movie_or_thumbnail(nowTime, formData, ATTRIBUTE_NAME_MOVIE)
 
-# 現在時刻を文字列で取得 YYYY_MM_DD_HH_MM_SS
+# 現在時刻を文字列で取得 YYYY_MM_DD_HH_MM_SS_MS_
 def get_now_time_as_str():
 	nowTime = datetime.datetime.now()
-	return str(nowTime.year) + '_' + str(nowTime.month) + '_' + str(nowTime.day) + '_' + str(nowTime.hour) + '_' + str(nowTime.minute) + '_' + str(nowTime.second) + '_'
+	return str(nowTime.year) + '_' + str(nowTime.month) + '_' + str(nowTime.day) + '_' + str(nowTime.hour) + '_' + str(nowTime.minute) + '_' + str(nowTime.second) + '_' + str(nowTime.microsecond) + '_'
 
 # 動画と画像を保存する
 def save_movie_or_thumbnail(uploadDate, formData, attributeName):
@@ -73,7 +68,7 @@ def save_movie_or_thumbnail(uploadDate, formData, attributeName):
 	try:
 		uploadedFile = open(filePath, 'wb')
 	except:
-		print('<p> Failed open file. Check filePath.</p>')
+		print('<p>Failed open file. Check filePath.</p>')
 		print('<p>' + filePath + ' is filePath.</p>')
 		print_footer()
 	while True:
@@ -84,7 +79,7 @@ def save_movie_or_thumbnail(uploadDate, formData, attributeName):
 		if len(str(chunk)) < 512:
 			break
 	uploadedFile.close()
-	print('<p>' + fileName + ' has just been uploaded.</p>')
+	#print('<p>' + fileName + ' has just been uploaded.</p>')
 
 # タイトルをcvsファイルに保存する
 def save_title_as_csv(uploadDate, formData, attributeName):
@@ -93,17 +88,15 @@ def save_title_as_csv(uploadDate, formData, attributeName):
 		print('<p>unexpected attributeName specified.</p>')
 		print_footer()
 	title = formData[attributeName].value
-	#try:
-	csvFile = open(filePath, 'a', encoding = 'utf-8')
-	"""
+	try:
+		csvFile = open(filePath, 'a', encoding = 'utf-8')
 	except:
-		print('<p> Failed open file. Check filePath.</p>')
+		print('<p>Failed open file. Check filePath.</p>')
 		print('<p>' + filePath + ' is filePath.</p>')
 		print_footer()
-	"""
 	csv.writer(csvFile).writerow([uploadDate, title])
 	csvFile.close()
-	print('<p>' + title + ' has just been written to csv.</p>')
+	#print('<p>' + title + ' has just been written to csv.</p>')
 
 def main():
 	print_header()
