@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import sys
 import cgi
 import cgitb; cgitb.enable()
 
@@ -30,6 +31,7 @@ def print_footer():
 	print('</body>')
 	print('')
 	print('</html>')
+	sys.exit(0)
 
 def print_movie(movieFileName):
 	print('<video src="../movie/' + movieFileName + '" controls></video>')

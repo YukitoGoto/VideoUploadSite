@@ -2,7 +2,6 @@
 
 import os
 import sys
-import datetime
 import csv
 import cgi
 import cgitb; cgitb.enable()
@@ -39,6 +38,7 @@ def print_footer():
 	print('</body>')
 	print('')
 	print('</html>')
+	sys.exit(0)
 
 def print_upload_page():
 	print('<a href = "upload.html">投稿ページ</a>')
@@ -58,7 +58,7 @@ def get_file_name_list(filePath):
 	try:
 		fileList = os.listdir(filePath)
 	except:
-		print('<p> Failed open file. Check filePath.</p>')
+		print('<p>Failed open file. Check filePath.</p>')
 		print('<p>' + filePath + ' is filePath.</p>')
 		print_footer()
 	return fileList
@@ -69,7 +69,7 @@ def get_uploaded_date_title_list():
 	try:
 		csvFile = open(filePath, 'r', encoding = 'utf-8')
 	except:
-		print('<p> Failed open file. Check filePath.</p>')
+		print('<p>Failed open file. Check filePath.</p>')
 		print('<p>' + filePath + ' is filePath.</p>')
 		print_footer()
 	reader = csv.reader(csvFile)
