@@ -35,7 +35,7 @@ def print_header():
 	print('<title>Upload has done.</title>')
 	print('</head>')
 	print('')
-	print('<body onLoad=setTimeout(\"location.href=\'../index.py\'\",500)>')
+	print('<body onLoad = setTimeout(\"location.href = \'../index.py\'\", 500)>')
 
 # HTMLフッタを出力しCGIを終了
 def print_footer():
