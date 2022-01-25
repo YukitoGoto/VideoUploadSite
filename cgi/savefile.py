@@ -58,8 +58,8 @@ def get_now_time_as_str():
 	return str(nowTime.year) + '_' + str(nowTime.month) + '_' + str(nowTime.day) + '_' + str(nowTime.hour) + '_' + str(nowTime.minute) + '_' + str(nowTime.second) + '_' + str(nowTime.microsecond) + '_'
 
 # 動画と画像を保存する
-def save_movie_or_thumbnail(uploadDate, formData, attributeName):
-	fileName = uploadDate + formData[attributeName].filename
+def save_movie_or_thumbnail(uploadedDate, formData, attributeName):
+	fileName = uploadedDate + formData[attributeName].filename
 	filePath = MOVIE_PATH + fileName if attributeName == ATTRIBUTE_NAME_MOVIE else THUMBNAIL_PATH + fileName if attributeName == ATTRIBUTE_NAME_THUMBNAIL else None
 	if filePath == None:
 		print('<p>unexpected attributeName specified.</p>')
@@ -82,7 +82,7 @@ def save_movie_or_thumbnail(uploadDate, formData, attributeName):
 	#print('<p>' + fileName + ' has just been uploaded.</p>')
 
 # タイトルをcvsファイルに保存する
-def save_title_as_csv(uploadDate, formData, attributeName):
+def save_title_as_csv(uploadedDate, formData, attributeName):
 	filePath = TITLE_PATH + 'title.csv' if attributeName == ATTRIBUTE_NAME_TITLE else None
 	if filePath == None:
 		print('<p>unexpected attributeName specified.</p>')
@@ -94,7 +94,7 @@ def save_title_as_csv(uploadDate, formData, attributeName):
 		print('<p>Failed open file. Check filePath.</p>')
 		print('<p>' + filePath + ' is filePath.</p>')
 		print_footer()
-	csv.writer(csvFile).writerow([uploadDate, title])
+	csv.writer(csvFile).writerow([uploadedDate, title])
 	csvFile.close()
 	#print('<p>' + title + ' has just been written to csv.</p>')
 
