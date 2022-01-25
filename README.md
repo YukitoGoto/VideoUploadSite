@@ -1,4 +1,11 @@
 # VideoUploadSite
+## Operation
+### title/title.csv
+- 動画の時間と動画のタイトルが記録されている。
+- ファイルの内容を消去して、投稿された動画をリセットする際には、以下のコマンドを実行する。パーミッションが`-rwxrwxrwx`に変更される。
+```
+chmod 777 title.csv
+```
 ## LoacalWebsSrver
 - [http://localhost:8080/](http://localhost:8080/)
 - [PythonによるCGIが動くHTTPサーバーを簡単に用意する](https://kurima.hatenablog.com/entry/2016/08/24/005716)

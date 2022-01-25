@@ -7,7 +7,7 @@ import csv
 import cgi
 import cgitb; cgitb.enable()
 
-CURRENT_PATH = str(os.getcwd().replace('/cgi', ''))
+CURRENT_PATH = str(os.getcwd().replace('\\cgi', '')) if os.name == 'nt' else str(os.getcwd().replace('/cgi', ''))
 MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + '/movie/'
 THUMBNAIL_PATH = CURRENT_PATH + '\\thumbnail\\' if os.name == 'nt' else CURRENT_PATH + '/thumbnail/'
 TITLE_PATH = CURRENT_PATH + '\\title\\' if os.name == 'nt' else CURRENT_PATH + '/title/'
@@ -19,23 +19,23 @@ ATTRIBUTE_NAME_TITLE = 'title'
 # HTMLヘッダを出力
 def print_header():
 	# need for cgi
-	print("Content-Type: text/html;charset = utf-8")
+	print("Content-Type: text/html;charset=utf-8")
 	print()
 	# head
 	print('<!DOCTYPE html>')
 	print('')
-	print('<html lang = "ja">')
+	print('<html lang="ja">')
 	print('')
 	print('<head>')
 	print('<!-- BootstrapのCSS読み込み -->')
-	print('<link href = "css/bootstrap.min.css" rel = "stylesheet">')
+	print('<link href="css/bootstrap.min.css" rel="stylesheet">')
 	print('<!-- BootstrapのJS読み込み -->')
-	print('<script src = "js/bootstrap.min.js"></script>')
-	print('<meta charset = "utf-8">')
+	print('<script src="js/bootstrap.min.js"></script>')
+	print('<meta charset="utf-8">')
 	print('<title>Upload has done.</title>')
 	print('</head>')
 	print('')
-	print('<body onLoad = setTimeout(\"location.href = \'../index.py\'\", 500)>')
+	print('<body onLoad=setTimeout(\"location.href=\'../index.py\'\",500)>')
 
 # HTMLフッタを出力しCGIを終了
 def print_footer():

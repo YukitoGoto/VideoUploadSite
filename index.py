@@ -6,7 +6,7 @@ import csv
 import cgi
 import cgitb; cgitb.enable()
 
-CURRENT_PATH = str(os.getcwd())
+CURRENT_PATH = str(os.getcwd().replace('\\cgi', '')) if os.name == 'nt' else str(os.getcwd().replace('/cgi', ''))
 TITLE_PATH = CURRENT_PATH + '\\title\\' if os.name == 'nt' else CURRENT_PATH + '/title/'
 THUMBNAIL_PATH = CURRENT_PATH + '\\thumbnail\\' if os.name == 'nt' else CURRENT_PATH + '/thumbnail/'
 MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + '/movie/'
@@ -14,20 +14,20 @@ MOVIE_PATH =  CURRENT_PATH + '\\movie\\' if os.name == 'nt' else CURRENT_PATH + 
 # HTMLヘッダを出力
 def print_header():
 	# need for cgi
-	print("Content-Type: text/html;charset = utf-8")
+	print("Content-Type: text/html;charset=utf-8")
 	print()
 	# head
 	print('<!DOCTYPE html>')
 	print('')
-	print('<html lang = "ja">')
+	print('<html lang="ja">')
 	print('')
 	print('<head>')
 	print('<!-- BootstrapのCSS読み込み -->')
-	print('<link href = "css/bootstrap.min.css" rel = "stylesheet">')
+	print('<link href="css/bootstrap.min.css" rel="stylesheet">')
 	print('<!-- BootstrapのJS読み込み -->')
-	print('<script src = "js/bootstrap.min.js"></script>')
-	print('<meta charset = "utf-8">')
-	print('<meta name = "viewport" content = "width = device - width, initial - scale = 1.0">')
+	print('<script src="js/bootstrap.min.js"></script>')
+	print('<meta charset="utf-8">')
+	print('<meta name="viewport" content="width=device-width,initial-scale=1.0">')
 	print('<title>動画投稿サイト</title>')
 	print('</head>')
 	print('')
@@ -41,14 +41,14 @@ def print_footer():
 	sys.exit(0)
 
 def print_upload_page():
-	print('<a href = "upload.html">投稿ページ</a>')
+	print('<a href="upload.html">投稿ページ</a>')
 
 def print_movie(titleName, thumbnailFileName, movieFileName):
-	print('<form class = "form-inline">')
-	print('<div class = "w-25">')
-	print('<div class = "card" onclick = "location.href = \'cgi/playsite.py?value1=' + thumbnailFileName + '&value2=' + movieFileName + '\'">')
-	print('<img class = "card-img-top" src = "thumbnail/' + thumbnailFileName + '" alt = "960x540" style = "width:auto">')
-	print('<div class = "card-body">' + titleName + '</div>')
+	print('<form class="form-inline">')
+	print('<div class="w-25">')
+	print('<div class="card" onclick="location.href=\'cgi/playsite.py?value1=' + thumbnailFileName + '&value2=' + movieFileName + '\'">')
+	print('<img class="card-img-top" src="thumbnail/' + thumbnailFileName + '" alt="960x540" style="width:auto">')
+	print('<div class="card-body">' + titleName + '</div>')
 	print('</div>')
 	print('</div>')
 	print('</form>')
@@ -82,7 +82,6 @@ def get_match_file_by_date(fileList, uploadedDate):
 		if uploadedDate in fileName:
 			return fileName
 	return None
-
 
 def main():
 	print_header()
