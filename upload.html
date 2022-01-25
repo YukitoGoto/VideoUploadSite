@@ -16,15 +16,15 @@
 		<form action = "cgi/savefile.py" method = "post" class = "form-horizontal" enctype = "multipart/form-data">
 			<div class = "form-group">
 				<label for = "title">タイトル</label>
-				<input type = "text" id = "title" name = "title" class = "form-control" placeholder = "動画のタイトルを入力">
+				<input type = "text" name = "title" class = "form-control" placeholder = "動画のタイトルを入力" required>
 			</div>
 			<div class = "form-group">
 				<label for = "thumbnail">サムネイル</label>
-				<input type = "file" id = "thumbnail" name = "thumbnail" accept = "image/*" class = "form-control">
+				<input type = "file" name = "thumbnail" accept = "image/*" class = "form-control" required>
 			</div>
 			<div class = "form-group">
 				<label for = "movie">動画</label>
-				<input type = "file" id = "movie" name = "movie" accept = "video/*" class = "form-control">
+				<input type = "file" name = "movie" accept = "video/*" class = "form-control" required>
 			</div>
 			<div class = "form-group">
 				<button type = "submit" class = "btn btn-warning">Upload</button>
