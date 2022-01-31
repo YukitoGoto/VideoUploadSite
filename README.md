@@ -1,10 +1,9 @@
 # VideoUploadSite
 ## Operation
 ### ssh
-- 接続先は以下の通り。
+- 鈴木弘先生のサーバーにsshする。接続先は以下の通り。
 ```
-m17252@172.16.41.1
-ahtahrae
+m17xxx@172.16.41.1
 ```
 ### title/title.csv
 - 動画の時間と動画のタイトルが記録されている。
